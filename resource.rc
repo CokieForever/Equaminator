@@ -1,0 +1,233 @@
+/*
+Equaminator - Small software for mathematical curves drawing
+Copyright (C) 2010-2013  Cokie
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
+
+#include "resources.h"
+#define TEXTE_IDEDIT 216
+
+#define APSTUDIO_READONLY_SYMBOLS
+#include "afxres.h"
+#undef APSTUDIO_READONLY_SYMBOLS
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_FRA)
+
+#ifdef _WIN32
+LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
+#pragma code_page(1252)
+#endif //_WIN32
+
+
+TEXTE_boiteCopiage DIALOG 0, 0, 100, 100
+BEGIN
+    EDITTEXT        TEXTE_IDEDIT, 0, 0, 100, 100, ES_MULTILINE
+END
+
+Options DIALOG 0, 0, 500, 300
+STYLE WS_POPUPWINDOW | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+CAPTION "Options"
+BEGIN
+      PUSHBUTTON    "Appliquer", IDP_APPLIQUER, 400, 275, 40, 15
+      DEFPUSHBUTTON "Ok", IDP_OK, 450, 275, 40, 15
+      PUSHBUTTON    "Annuler", IDP_ANNULER, 350, 275, 40, 15
+END
+
+OptionsTrace DIALOGEX 0, 0, 500, 230
+STYLE WS_CHILD
+FONT 8, "Arial", 1000, 1
+BEGIN
+      CONTROL       "Options de tracé", IDGB_OPTIONSTRACE, "button", BS_GROUPBOX, 0, 0, 190, 85
+      LTEXT         "Nombre de points :", IDT_TEXTE, 10, 15, 70, 10
+      EDITTEXT      IDE_NOMBREPOINTS, 80, 14, 60, 12, ES_AUTOHSCROLL | ES_NUMBER | WS_TABSTOP
+      CHECKBOX      " Relier les points", IDC_RELIER, 10, 30, 70, 10, BS_AUTOCHECKBOX | WS_TABSTOP
+      CHECKBOX      " Tests de discontinuité", IDC_TESTDISCONT, 20, 45, 90, 10, BS_AUTOCHECKBOX | WS_TABSTOP
+      LTEXT         "Couleur du tracé :", IDT_TEXTE, 10, 65, 60, 10
+      LTEXT         "", IDT_COULEURTRACE, 90, 65, 40, 10
+      PUSHBUTTON    "Changer", IDP_COULEURTRACE, 130, 64, 40, 10
+
+      CONTROL       "Options de courbe", IDGB_OPTIONSCOURBE, "button", BS_GROUPBOX, 200, 0, 140, 85
+      LTEXT         "Type de courbe :", IDT_TEXTE, 210, 15, 70, 10
+      COMBOBOX      IDCB_TYPECOURBE, 210, 30, 80, 60, CBS_AUTOHSCROLL | CBS_DROPDOWNLIST | WS_TABSTOP
+      LTEXT         "Variable :", IDT_TEXTE, 210, 55, 45, 10
+      COMBOBOX      IDCB_VARIABLE, 255, 54, 35, 40, CBS_AUTOHSCROLL | CBS_DROPDOWN | WS_TABSTOP
+
+      CONTROL       "Réglages de repère / fenêtre", IDGB_REGLAGESREPERE, "button", BS_GROUPBOX, 0, 95, 190, 125
+      LTEXT         "Xmin :", IDT_TEXTE, 10, 115, 30, 10
+      EDITTEXT      IDE_XMIN, 40, 114, 40, 12
+      LTEXT         "Ymin :", IDT_TEXTE, 100, 115, 30, 10
+      EDITTEXT      IDE_YMIN, 130, 114, 40, 12
+      LTEXT         "Xmax :", IDT_TEXTE, 10, 135, 30, 10
+      EDITTEXT      IDE_XMAX, 40, 134, 40, 12
+      LTEXT         "Ymax :", IDT_TEXTE, 100, 135, 30, 10
+      EDITTEXT      IDE_YMAX, 130, 134, 40, 12
+      LTEXT         "Xech :", IDT_TEXTE, 10, 155, 30, 10
+      EDITTEXT      IDE_XECH, 40, 154, 40, 12
+      LTEXT         "Yech :", IDT_TEXTE, 100, 155, 30, 10
+      EDITTEXT      IDE_YECH, 130, 154, 40, 12
+      PUSHBUTTON    "Par défaut", IDP_REPEREDEFAUT, 45, 173, 40, 14
+      PUSHBUTTON    "Normé", IDP_REPERENORME, 95, 173, 40, 14
+      LTEXT         "Couleur du repère :", IDT_TEXTE, 10, 200, 65, 10
+      LTEXT         "", IDT_COULEURREPERE, 95, 200, 40, 10
+      PUSHBUTTON    "Changer", IDP_COULEURREPERE, 135, 199, 40, 10
+
+      CONTROL       "Changement de repère", IDGB_CHANGEMENTREPERE, "button", BS_GROUPBOX, 200, 95, 140, 125
+      LTEXT         "Nouvelle origine...", IDT_TEXTE, 210, 117, 70, 10
+      LTEXT         "Abscisse :", IDT_TEXTE, 210, 132, 50, 10
+      EDITTEXT      IDE_XORIGINE, 260, 131, 40, 12
+      LTEXT         "Ordonnée :", IDT_TEXTE, 210, 147, 50, 10
+      EDITTEXT      IDE_YORIGINE, 260, 146, 40, 12
+      LTEXT         "Rotation :", IDT_TEXTE, 210, 175, 50, 10
+      EDITTEXT      IDE_ROTATIONREPERE, 260, 174, 40, 12
+      LTEXT         "°", IDT_TEXTE, 302, 175, 10, 10
+      LTEXT         "Par rapport au repère par défaut", IDT_TEXTE, 210, 200, 120, 10
+END
+
+Couleur DIALOG 0, 0, 5, 5
+EXSTYLE WS_EX_CLIENTEDGE
+STYLE WS_CHILD
+BEGIN
+END
+
+OptionsParam DIALOGEX 0, 0, 500, 230
+STYLE WS_CHILD
+FONT 8, "Arial", 1000, 1
+BEGIN
+      CONTROL       "Options de paramètre", IDGB_OPTIONSPARAM, "button", BS_GROUPBOX, 0, 0, 250, 170
+      LTEXT         "Pour les courbes :", IDT_TEXTE, 10, 15, 70, 10
+      COMBOBOX      IDCB_TYPECOURBE, 80, 13, 90, 60, CBS_AUTOHSCROLL | CBS_DROPDOWNLIST | WS_TABSTOP
+      LTEXT         "Bornes de variations du paramètre :", IDT_TEXTE, 10, 35, 200, 10
+      CONTROL       "Automatiques selon la fenêtre et/ou la courbe", IDR_AUTOVARIATION, "button", BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP, 10, 45, 200, 10
+      CONTROL       "Fixes, manuelles", IDR_MANUVARIATION, "button", BS_AUTORADIOBUTTON | WS_TABSTOP, 10, 57, 90, 10
+      LTEXT         "De :", IDT_TEXTE, 20, 72, 20, 10
+      EDITTEXT      IDE_BORNE1, 40, 71, 40, 12
+      LTEXT         "A :", IDT_TEXTE, 95, 72, 20, 10
+      EDITTEXT      IDE_BORNE2, 110, 71, 40, 12
+      CHECKBOX      "Pas fixe :", IDC_PASFIXE, 10, 95, 45, 10, BS_AUTOCHECKBOX | WS_TABSTOP
+      EDITTEXT      IDE_PAS, 60, 94, 40, 12
+      CHECKBOX      "Continuer tant que les points sont dans la fenêtre", IDC_CONTINUERTRACE, 10, 110, 200, 10, BS_AUTOCHECKBOX | WS_TABSTOP
+      LTEXT         "S'arrêter au bout de :", IDT_TEXTE, 20, 125, 70, 10
+      EDITTEXT      IDE_POINTSSUP, 95, 124, 40, 12, ES_AUTOHSCROLL | ES_NUMBER | WS_TABSTOP
+      LTEXT         "points supplémentaires", IDT_TEXTE, 140, 125, 100, 10
+      CHECKBOX      "S'arrêter au bout de :", IDC_ARRETERTRACE, 10, 140, 80, 10, BS_AUTOCHECKBOX | WS_TABSTOP
+      EDITTEXT      IDE_POINTSDEHORS, 95, 139, 40, 12, ES_AUTOHSCROLL | ES_NUMBER | WS_TABSTOP
+      LTEXT         "points en dehors de la fenêtre", IDT_TEXTE, 140, 140, 100, 10
+      CHECKBOX      "Consécutifs", IDC_POINTSDEHORSCONSECUTIFS, 20, 152, 50, 10, BS_AUTOCHECKBOX | WS_TABSTOP
+END
+
+OptionsAlgo DIALOGEX 0, 0, 500, 230
+STYLE WS_CHILD
+FONT 8, "Arial", 1000, 1
+BEGIN
+      CONTROL       "Calcul intégral", IDGB_CALCULINTG, "button", BS_GROUPBOX, 0, 0, 230, 110
+      LTEXT         "Calculer les intégrales avec la méthode suivante :", IDT_TEXTE, 10, 15, 180, 10
+      CONTROL       "Somme de Riemann", IDR_RIEMANN, "button", BS_AUTORADIOBUTTON | WS_TABSTOP | WS_GROUP, 10, 30, 100, 10
+      CONTROL       "Calcul des aires", IDR_AIRES, "button", BS_AUTORADIOBUTTON | WS_TABSTOP, 10, 45, 100, 10
+      CONTROL       "Méthode de Gauss", IDR_GAUSS, "button", BS_AUTORADIOBUTTON | WS_TABSTOP, 10, 60, 100, 10
+      CONTROL       "Par probabilités", IDR_PROBA, "button", BS_AUTORADIOBUTTON | WS_TABSTOP, 10, 75, 100, 10
+      CONTROL       "Par primitive", IDR_PRIMITIVE, "button", BS_AUTORADIOBUTTON | WS_TABSTOP, 10, 90, 100, 10
+
+      CONTROL       "", IDGB_SEPARATEUR, "button", BS_GROUPBOX, 110, 25, 1, 75
+      LTEXT         "Points tests :", IDT_TEXTE, 130, 60, 50, 10
+      EDITTEXT      IDE_POINTSTESTS1, 180, 59, 40, 12, ES_AUTOHSCROLL | ES_NUMBER | WS_TABSTOP
+
+      CONTROL       "Calcul de primitives", IDGB_PRIMITIVES, "button", BS_GROUPBOX, 0, 120, 230, 70
+      LTEXT         "Calculer les primitives avec la méthode suivante :", IDT_TEXTE, 10, 140, 180, 10
+      CONTROL       "Méthode d'Euler", IDR_EULER, "button", BS_AUTORADIOBUTTON | WS_TABSTOP | WS_GROUP, 10, 155, 100, 10
+      CONTROL       "Par intégrale", IDR_INTG, "button", BS_AUTORADIOBUTTON | WS_TABSTOP, 10, 170, 100, 10
+
+      CONTROL       "", IDGB_SEPARATEUR, "button", BS_GROUPBOX, 110, 150, 1, 30
+      LTEXT         "Points tests :", IDT_TEXTE, 130, 162, 50, 10
+      EDITTEXT      IDE_POINTSTESTS2, 180, 161, 40, 12, ES_AUTOHSCROLL | ES_NUMBER | WS_TABSTOP
+END
+
+OptionsFonctions DIALOGEX 0, 0, 370, 230
+STYLE WS_CHILD
+FONT 8, "Arial", 1000, 1
+BEGIN
+      CONTROL       "Fonctions définies", IDGB_FONCTIONS, "button", BS_GROUPBOX, 0, 0, 370, 230
+      PUSHBUTTON    "Ajouter", IDP_AJOUTER, 9, 210, 50, 12
+      PUSHBUTTON    "Modifier", IDP_MODIFIER, 69, 210, 50, 12
+      PUSHBUTTON    "Supprimer", IDP_SUPPRIMER, 129, 210, 50, 12
+      PUSHBUTTON    "Réinitialiser", IDP_RESET, 299, 210, 60, 12
+END
+
+NouvelleFonction DIALOGEX 0, 0, 170, 175
+STYLE WS_POPUPWINDOW
+CAPTION "Nouvelle équation"
+FONT 8, "Arial", 1000, 1
+BEGIN
+      LTEXT         "Nom :", IDT_TEXTE, 10, 10, 30, 10
+      EDITTEXT      IDE_NOM, 40, 9, 50, 10, WS_TABSTOP | ES_AUTOHSCROLL
+      LTEXT         "Type :", IDT_TEXTE, 10, 25, 30, 10
+      COMBOBOX      IDCB_TYPECOURBE, 40, 24, 90, 60, CBS_AUTOHSCROLL | CBS_DROPDOWNLIST | WS_TABSTOP
+      LTEXT         "Expression :", IDT_TEXTE, 10, 50, 60, 10
+      EDITTEXT      IDE_FONCTION, 70, 49, 90, 12, WS_TABSTOP | ES_AUTOHSCROLL
+      LTEXT         "De variable :", IDT_TEXTE, 10, 65, 60, 10
+      COMBOBOX      IDCB_VARIABLE, 70, 64, 30, 12, CBS_AUTOHSCROLL | CBS_DROPDOWN | WS_TABSTOP
+      LTEXT         "Borne 1 :", IDT_TEXTE, 10, 90, 50, 10
+      EDITTEXT      IDE_BORNE1, 60, 89, 50, 10, WS_TABSTOP | ES_AUTOHSCROLL
+      LTEXT         "Borne 2 :", IDT_TEXTE, 10, 105, 50, 10
+      EDITTEXT      IDE_BORNE2, 60, 104, 50, 10, WS_TABSTOP | ES_AUTOHSCROLL
+      LTEXT         "Couleur :", IDT_TEXTE, 10, 130, 50, 10
+      LTEXT         "", IDT_COULEUR, 60, 130, 40, 10
+      PUSHBUTTON    "Changer", IDP_COULEUR, 100, 129, 40, 12
+      DEFPUSHBUTTON "Ok", IDP_OK, 35, 154, 40, 12
+      PUSHBUTTON    "Annuler", IDP_ANNULER, 85, 154, 40, 12
+END
+
+OptionsVariables DIALOGEX 0, 0, 370, 230
+STYLE WS_CHILD
+FONT 8, "Arial", 1000, 1
+BEGIN
+      CONTROL       "Variables définies", IDGB_VARIABLES, "button", BS_GROUPBOX, 0, 0, 370, 230
+      PUSHBUTTON    "Ajouter", IDP_AJOUTER, 9, 210, 50, 12
+      PUSHBUTTON    "Modifier", IDP_MODIFIER, 69, 210, 50, 12
+      PUSHBUTTON    "Supprimer", IDP_SUPPRIMER, 129, 210, 50, 12
+      PUSHBUTTON    "Réinitialiser", IDP_RESET, 299, 210, 60, 12
+END
+
+NouvelleVariable DIALOGEX 0, 0, 150, 60
+STYLE WS_POPUPWINDOW
+CAPTION "Nouvelle variable"
+FONT 8, "Arial", 1000, 1
+BEGIN
+      LTEXT         "Nom :", IDT_TEXTE, 10, 10, 30, 10
+      EDITTEXT      IDE_NOM, 50, 9, 50, 10, WS_TABSTOP | ES_AUTOHSCROLL
+      LTEXT         "Valeur :", IDT_TEXTE, 10, 25, 60, 10
+      EDITTEXT      IDE_VARIABLE, 50, 24, 90, 12, WS_TABSTOP | ES_AUTOHSCROLL
+      DEFPUSHBUTTON "Ok", IDP_OK, 30, 44, 40, 12
+      PUSHBUTTON    "Annuler", IDP_ANNULER, 80, 44, 40, 12
+END
+
+Rappels DIALOGEX 0, 0, 370, 230
+STYLE WS_CHILD
+FONT 8, "Arial", 1000, 1
+BEGIN
+      CONTROL       "Objets prédéfinis", IDGB_OBJETS, "button", BS_GROUPBOX, 0, 0, 370, 230
+      CONTROL       "Fonctions", IDR_FONCTIONS, "button", BS_AUTORADIOBUTTON | WS_TABSTOP | WS_GROUP, 10, 15, 70, 10
+      CONTROL       "Variables", IDR_VARIABLES, "button", BS_AUTORADIOBUTTON | WS_TABSTOP, 80, 15, 70, 10
+END
+
+
+
+
+#endif    // French (France) resources
+
+
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "Equaminator.exe.manifest"
+icoVide ICON "icoVide.ico"
